@@ -12,9 +12,14 @@ const App: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+//  const scrollToTop = () => {
+//    window.scrollTo({ top: 0, behavior: "smooth" });
+//  };
+const scrollToTop = () => {
+  const scrollTarget = window.document.scrollingElement || document.documentElement;
+  scrollTarget.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 
   return (
     <>

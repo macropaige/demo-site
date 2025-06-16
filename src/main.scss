@@ -8,6 +8,10 @@ body {
     overflow-x: hidden;
     font-family: Arial, sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
+
 
 // Variables
 $app-background: url("/background.svg");
