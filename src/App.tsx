@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import './Main.scss';
+import React, { useEffect, useState } from "react";
+import "/src/main.scss"; // Adjust path if needed
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -8,46 +8,56 @@ const App: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
-      <div className={`background-layer ${scrolled ? 'scrolled' : ''}`} />
-      <header className={`main-header ${scrolled ? 'shrink' : ''}`}>
-        <div className="logo">🌟</div>
-        <div className="header-container">
-          <nav className="nav-center">
-            <a href="#hero">Home</a>
-            <a href="#info">Info</a>
-          </nav>
-        </div>
-      </header>
+      {/* Full-screen background layer */}
+      <div className={`background-layer ${scrolled ? "scrolled" : ""}`} />
 
-      <main className="app-container">
-        <div className="content">
-          <section className="hero" id="hero">
-            <h2>Welcome to the Landing Page</h2>
-            <p>This is a modern landing page built with Vite + React + TypeScript.</p>
+      {/* Main app content on top */}
+      <div className="app-container">
+        <header className={`main-header ${scrolled ? "shrink" : ""}`}>
+          <div className="header-container">
+            <img src="/logo.svg" alt="Beacon Co. Logo" className="logo" />
+            <nav className="nav-center">
+              <a href="#">Home</a>
+              <a href="#">Updates</a>
+              <a href="#">Directory</a>
+            </nav>
+          </div>
+        </header>
+
+        <main className="content">
+          <section className="hero">
+            <h2>Intranet Demo Beta</h2>
+            <p>Repeating scroll lines using array</p>
           </section>
 
-          <section className="info" id="info">
+          <section className="info">
             <div className="info-wrapper">
-              <h3>Details</h3>
-              <p>Some info about your product or service goes here.</p>
+              <p>Lorem ipsum...</p>
+              {Array.from({ length: 200 }).map((_, i) => (
+                <p key={i}>This is sample scroll content #{i + 1}</p>
+              ))}
             </div>
           </section>
-        </div>
-      </main>
+        </main>
+      </div>
 
-      <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        ↑ Top
-      </button>
+      {scrolled && (
+        <button className="back-to-top" onClick={scrollToTop}>
+          Back to Top
+        </button>
+      )}
     </>
   );
 };
 
 export default App;
-
