@@ -1,0 +1,149 @@
+// Reset + base styles
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+// Variables
+$app-background: url("/background.svg");
+$transition-time: 0.3s;
+
+.background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background: url("/background.svg") no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    transition: filter $transition-time ease, opacity $transition-time ease;
+    pointer-events: none; // <-- this is the key
+}
+
+.background-layer.scrolled {
+    filter: blur(4px);
+    opacity: 0.4;
+}
+
+.app-container {
+    position: absolute;
+    z-index: 1;
+    top: 5rem;
+    width: 100%;
+    min-height: 100vh;
+    display: block;
+}
+
+// Header bar
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+    transition: padding $transition-time ease, background $transition-time ease;
+    padding: 1.75rem 0; // starting size of header
+
+    &.shrink {
+        padding: 1rem 0; // only shrink vertically — leave horizontal alone
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    .logo {
+        position: absolute;
+        top: 50%;
+        left: 2rem;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1.5rem; // Side-padding for very narrow screens
+    }
+
+    .nav-center {
+        display: flex;
+        gap: 2rem;
+
+        a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+    }
+}
+
+// Page content
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; // ← This centers inner content horizontally
+    justify-content: center;
+
+    padding: auto;
+    margin: 0 auto; // ← This centers the container itself
+    max-width: 900px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+.info {
+    text-align: center;
+
+    .info-wrapper {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: left;
+    }
+}
+
+// Scroll to top button — stays visible
+.back-to-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 2000;
+    filter: none;
+    backdrop-filter: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
