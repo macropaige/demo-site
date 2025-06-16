@@ -43,6 +43,7 @@ $transition-time: 0.3s;
     width: 100%;
     min-height: 100vh;
     display: block;
+    margin-top: 10rem; // enough to account for the fixed banner + header
 }
 
 // Header bar
@@ -94,17 +95,27 @@ $transition-time: 0.3s;
 
 // Page content
 .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center; // ← This centers inner content horizontally
-    justify-content: center;
+    opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  padding: auto;
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    padding: auto;
-    margin: 0 auto; // ← This centers the container itself
-    max-width: 900px;
-    width: 100%;
-    box-sizing: border-box;
+.content.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content.hidden {
+  pointer-events: none;
 }
 
 .hero {
@@ -153,11 +164,12 @@ $transition-time: 0.3s;
 }
 
 .banner {
+    position: fixed; // removes from document flow
+    top: 0;
+    left: 0;
     width: 100%;
-    overflow: hidden;
+    z-index: 998;
     transition: opacity 0.4s ease, transform 0.4s ease;
-    position: relative;
-    z-index: 999;
 
     img {
         width: 100%;
@@ -171,6 +183,7 @@ $transition-time: 0.3s;
         pointer-events: none;
     }
 }
+
 .footer-image {
     position: relative; // key for positioning overlay
     width: 100%;

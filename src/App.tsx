@@ -3,11 +3,13 @@ import "/src/main.scss";
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+   const handleScroll = () => {
+  setScrolled(window.scrollY > 50);
+  setShowContent(window.scrollY > 100); // adjust threshold if needed
+};
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -36,8 +38,10 @@ const App: React.FC = () => {
             </nav>
           </div>
         </header>
-
-        <main className="content">
+        <div style={{ height: "300px" }} />
+<div style={{ height: "auto" }} />
+<main className={`content ${showContent ? "fade-in" : "hidden"}`}></main>
+        <main className={`content ${showContent ? "fade-in" : "hidden"}`}>
           <section className="hero">
             <h2>Intranet Demo Beta</h2>
             <p>Repeating scroll lines using array</p>
@@ -65,6 +69,7 @@ const App: React.FC = () => {
         <button className="back-to-top" onClick={scrollToTop}>
           Back to Top
         </button>
+        
       )}
     </>
   );
