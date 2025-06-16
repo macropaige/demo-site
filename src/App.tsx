@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "/src/main.scss"; // Adjust path if needed
+import "/src/main.scss";
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -13,19 +13,22 @@ const App: React.FC = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const scrollTarget = document.scrollingElement || document.documentElement;
+    scrollTarget.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <>
-      {/* Full-screen background layer */}
       <div className={`background-layer ${scrolled ? "scrolled" : ""}`} />
 
-      {/* Main app content on top */}
       <div className="app-container">
+        <div className={`banner ${scrolled ? "fade-out" : ""}`}>
+          <img src="/Header.png" alt="Banner" />
+        </div>
+
         <header className={`main-header ${scrolled ? "shrink" : ""}`}>
           <div className="header-container">
-            <img src="/logo.svg" alt="Beacon Co. Logo" className="logo" />
+            <img src="/logo.svg" alt="Logo" className="logo" />
             <nav className="nav-center">
               <a href="#">Home</a>
               <a href="#">Updates</a>
@@ -49,6 +52,13 @@ const App: React.FC = () => {
             </div>
           </section>
         </main>
+
+        <footer className="footer-image">
+          <img src="/footer02.png" alt="Footer landscape" />
+          <div className="footer-text">
+            © 2025 Kitty Cat Patty Wack. All rights reserved.
+          </div>
+        </footer>
       </div>
 
       {scrolled && (
