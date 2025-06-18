@@ -1,0 +1,37 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+    .dropdown-label {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        min-width: 200px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+
+        a {
+            display: block;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #333;
+
+            &:hover {
+                background: #f5f5f5;
+            }
+        }
+    }
+
+    &:hover .dropdown-content {
+        display: block;
+    }
+}
