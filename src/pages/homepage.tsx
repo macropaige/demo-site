@@ -17,8 +17,7 @@ const Homepage: React.FC = () => {
 
             <main className="home-content">
                 <section className="hero">
-                    <h2>Intranet Demo Beta</h2>
-                    <p>Repeating scroll lines using array</p>
+                    
                 </section>
 
                 <section className="info">

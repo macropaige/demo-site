@@ -1,6 +1,7 @@
+// src/App.tsx
 import React, { useEffect, useState } from "react";
-import "/src/main.scss";
-import Homepage from "./pages/homepage";    // ← pull in your page
+import "./main.scss";
+import Homepage from "./pages/homepage";
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,10 +24,21 @@ const App: React.FC = () => {
   return (
     <>
       <div className="app-container">
+        {/* ─── HERO BANNER ─── */}
         <div className={`banner ${scrolled ? "fade-out" : ""}`}>
           <img src="/Header.png" alt="Banner" />
+
+          <div className="banner-content">
+            <h1 className="banner-title">Intranet Demo Beta</h1>
+            <nav className="banner-nav">
+              <a href="#">Feature A</a>
+              <a href="#">Feature B</a>
+              <a href="#">Feature C</a>
+            </nav>
+          </div>
         </div>
 
+        {/* ─── SITE HEADER ─── */}
         <header className={`main-header ${scrolled ? "shrink" : ""}`}>
           <div className="header-container">
             <img src="/logo.svg" alt="Logo" className="logo" />
@@ -37,23 +49,11 @@ const App: React.FC = () => {
             </nav>
           </div>
         </header>
-        {/* ← This is it: mount your homepage component here */}
-        <Homepage />
-        <main className={`content ${showContent ? "fade-in" : "hidden"}`}>
-          <section className="hero">
-            <h2>Intranet Demo Beta</h2>
-            <p>Repeating scroll lines using array</p>
-          </section>
-          <section className="info">
-            <div className="info-wrapper">
-              <p>Lorem ipsum...</p>
-              {Array.from({ length: 200 }).map((_, i) => (
-                <p key={i}>This is sample scroll content #{i + 1}</p>
-              ))}
-            </div>
-          </section>
-        </main>
 
+        {/* ─── PAGE CONTENT ─── */}
+        <Homepage />
+
+        {/* ─── FOOTER ─── */}
         <footer className="footer-image">
           <img src="/footer02.png" alt="Footer landscape" />
           <div className="footer-text">
@@ -62,6 +62,7 @@ const App: React.FC = () => {
         </footer>
       </div>
 
+      {/* ─── BACK TO TOP ─── */}
       {scrolled && (
         <button className="back-to-top" onClick={scrollToTop}>
           Back to Top

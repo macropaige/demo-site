@@ -1,3 +1,5 @@
+// src/main.scss
+
 // Reset + base styles
 html,
 body {
@@ -7,46 +9,39 @@ body {
     width: 100%;
     overflow-x: hidden;
     font-family: Arial, sans-serif;
-    
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-
+// Layout wrapper
 .app-container {
     position: absolute;
     z-index: 1;
-    top: 5rem;
+    top: 5rem; // clears header
     width: 100%;
     min-height: 100vh;
-    display: block;
-    margin-top: 10rem; // enough to account for the fixed banner + header
+    margin-top: 10rem; // extra space for banner + header
 }
 
-// Header bar
+// SITE HEADER
 .main-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
     padding: 1.75rem 0;
+    background: rgba(248, 248, 248, 0.8);
+    backdrop-filter: blur(10px);
     z-index: 1000;
-
-    background: rgba(248, 248, 248, 0.8); // semi-transparent, color: Horizon: #5D80A0
-    backdrop-filter: blur(10px); // <-- frosted glass effect
-    -webkit-backdrop-filter: blur(10px); // Safari support
-
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); // ← Drop shadow here
-
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: padding 0.3s ease, background 0.3s ease;
 
     &.shrink {
         padding: 1rem 0;
-        background: rgba(93, 128, 160, 0.6); // slightly more solid when scrolling; Horizon/#5D80A0
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15); // slightly deeper on scroll
+        background: rgba(93, 128, 160, 0.6);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
     }
 
     .logo {
@@ -79,88 +74,58 @@ html {
     }
 }
 
-// Page content
-.content {
-    opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    padding: auto;
-    margin: 0 auto;
-    max-width: 900px;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.content.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.content.hidden {
-    pointer-events: none;
-}
-
-.hero {
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-bottom: 2rem;
-
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    p {
-        font-size: 1.2rem;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-}
-
-.info {
-    text-align: center;
-
-    .info-wrapper {
-        max-width: 700px;
-        margin: 0 auto;
-        text-align: left;
-    }
-}
-
-// Scroll to top button — stays visible
-.back-to-top {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 0.75rem 0.75rem;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 0.75rem;
-    z-index: 2000;
-    filter: none;
-    backdrop-filter: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
+// BANNER (image + banner‐specific links/title)
 .banner {
-    position: fixed; // removes from document flow
+    position: fixed;
     top: 10%;
-    left: 2%;
-    width: 45%;
-    z-index: 998;
+    left: 0;
+    width: 100%;
+    height: auto; // adjust to taste
+    z-index: 900; // sits behind header (1000)
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
     transition: opacity 0.4s ease, transform 0.4s ease;
 
     img {
-        width: 100%;
         height: auto;
+        width: 50%;
+        object-fit: cover;
         display: block;
+    }
+
+    .banner-content {
+        width: 50%;
+        padding-left: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        pointer-events: auto; // so links are clickable
+    }
+
+    .banner-title {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .banner-nav {
+        margin-top: 0.5rem;
+        display: flex;
+        gap: 1rem;
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #ddd;
+        }
     }
 
     &.fade-out {
@@ -170,26 +135,18 @@ html {
     }
 }
 
-.footer-image {
-    position: relative; // key for positioning overlay
-    width: 100%;
-    margin-top: 2rem;
-
-    img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    .footer-text {
-        position: absolute;
-        bottom: 10%; // adjust if you want it higher/lower
-        width: 100%;
-        text-align: center;
-        color: white;
-        font-size: 1rem;
-        font-weight: 500;
-        text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-        padding: 0 1rem;
-    }
+// BACK‐TO‐TOP
+.back-to-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    z-index: 2000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
