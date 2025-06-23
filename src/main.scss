@@ -15,29 +15,6 @@ html {
 }
 
 
-// Variables
-$app-background: url("/background.svg");
-$transition-time: 0.3s;
-
-.background-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    background: url("/background.svg") no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    transition: filter $transition-time ease, opacity $transition-time ease;
-    pointer-events: none; // <-- this is the key
-}
-
-.background-layer.scrolled {
-    filter: blur(4px);
-    opacity: 0.4;
-}
-
 .app-container {
     position: absolute;
     z-index: 1;
@@ -58,17 +35,17 @@ $transition-time: 0.3s;
     padding: 1.75rem 0;
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.3); // semi-transparent
+    background: rgba(248, 248, 248, 0.8); // semi-transparent, color: Horizon: #5D80A0
     backdrop-filter: blur(10px); // <-- frosted glass effect
     -webkit-backdrop-filter: blur(10px); // Safari support
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // ← Drop shadow here
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); // ← Drop shadow here
 
     transition: padding 0.3s ease, background 0.3s ease;
 
     &.shrink {
         padding: 1rem 0;
-        background: rgba(255, 255, 255, 0.6); // slightly more solid when scrolling
+        background: rgba(93, 128, 160, 0.6); // slightly more solid when scrolling; Horizon/#5D80A0
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15); // slightly deeper on scroll
     }
 

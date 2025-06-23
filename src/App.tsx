@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "/src/main.scss";
+import Homepage from "./pages/homepage";    // ← pull in your page
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -8,21 +9,19 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      setShowContent(window.scrollY > 100); // adjust threshold if needed
+      setShowContent(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    const scrollTarget = document.scrollingElement || document.documentElement;
-    scrollTarget.scrollTo({ top: 0, behavior: "smooth" });
+    const scrollEl = document.scrollingElement || document.documentElement;
+    scrollEl.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <>
-      <div className={`background-layer ${scrolled ? "scrolled" : ""}`} />
-
       <div className="app-container">
         <div className={`banner ${scrolled ? "fade-out" : ""}`}>
           <img src="/Header.png" alt="Banner" />
@@ -38,15 +37,13 @@ const App: React.FC = () => {
             </nav>
           </div>
         </header>
-        <div style={{ height: "300px" }} />
-        <div style={{ height: "auto" }} />
-        <main className={`content ${showContent ? "fade-in" : "hidden"}`}></main>
+        {/* ← This is it: mount your homepage component here */}
+        <Homepage />
         <main className={`content ${showContent ? "fade-in" : "hidden"}`}>
           <section className="hero">
             <h2>Intranet Demo Beta</h2>
             <p>Repeating scroll lines using array</p>
           </section>
-
           <section className="info">
             <div className="info-wrapper">
               <p>Lorem ipsum...</p>
@@ -69,7 +66,6 @@ const App: React.FC = () => {
         <button className="back-to-top" onClick={scrollToTop}>
           Back to Top
         </button>
-
       )}
     </>
   );
