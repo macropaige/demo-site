@@ -22,11 +22,8 @@ const Homepage: React.FC = () => {
                 </section>
 
                 <section className="info">
-                    <div className="info-wrapper">
-                        <p>Lorem ipsum...</p>
-                        {Array.from({ length: 200 }).map((_, i) => (
-                            <p key={i}>This is sample scroll content #{i + 1}</p>
-                        ))}
+                    <div className="info-wrapper">                       
+                        
                     </div>
                 </section>
             </main>
