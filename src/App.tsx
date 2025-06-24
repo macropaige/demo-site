@@ -46,11 +46,11 @@ const App: React.FC = () => {
               <a href="#">Directory</a>
               {/* your new dropdown */}
               <DropdownMenu
-                title="Application Links"
+                title="Application Links "
                 items={[
-                  { label: "Feature A", href: "#" },
-                  { label: "Feature B", href: "#" },
-                  { label: "Feature C", href: "#" },
+                  { label: "Workday", href: "#", iconSrc: "/workday_blue.png" },
+                  { label: "OKTA Dashboard", href: "#", iconSrc: "/okta.png" },
+                  { label: "ServiceNow", href: "#", iconSrc: "/service_now.png" },
                 ]}
               />
             </nav>

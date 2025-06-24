@@ -11,11 +11,24 @@
     font-size: 1rem;
     line-height: 1;
     cursor: pointer;
+    display: flex; /* Use flexbox to align text and arrow */
+    align-items: center; /* Center them vertically */
+    gap: 0.5rem; /* Space between text and arrow */
   
 
   &:focus {
       outline: none;
       box-shadow: none;
+    }
+
+    .dropdown-arrow {
+        display: inline-block; /* Allows transformation */
+        transition: transform 0.3s ease; /* Smooth transition for rotation */
+        font-size: 0.8rem; /* Adjust arrow size if needed */
+
+        &.open {
+            transform: rotate(180deg); /* Rotate 180 degrees to point up */
+        }
     }
   }
   .dropdown-menu {
@@ -29,16 +42,33 @@
     list-style: none;
     padding: 0.5rem 0;
     z-index: 1100;
+    min-width: 150px;
 
     li {
       margin: 0;
 
       a {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 0.5rem 1rem;
         color: #333;
         text-decoration: none;
         transition: background 0.2s ease;
+
+        .dropdown-icon { 
+            max-width: 100px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+        .dropdown-text {
+            font-size: 0.8rem;
+            text-align: center;
+        }
 
         &:hover {
           background: #f0f0f0;

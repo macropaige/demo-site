@@ -1,9 +1,11 @@
+// src/components/DropdownMenu.tsx
 import React, { useState, useRef, useEffect } from "react";
 import "./DropdownMenu.scss";
 
 interface DropdownItem {
     label: string;
     href: string;
+    iconSrc?: string;
 }
 
 interface DropdownMenuProps {
@@ -32,12 +34,18 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, items }) => {
         <div className="dropdown" ref={ref}>
             <button className="dropdown-toggle" onClick={toggle}>
                 {title}
+                <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>&#9660;</span> {/* Unicode for a down arrow */}
             </button>
             {isOpen && (
                 <ul className="dropdown-menu">
                     {items.map((item) => (
                         <li key={item.label}>
-                            <a href={item.href}>{item.label}</a>
+                            <a href={item.href}>
+                                {item.iconSrc && (
+                                    <img src={item.iconSrc} alt={`${item.label} icon`} className="dropdown-icon" />
+                                )}
+                                <span className="dropdown-text">{item.label}</span>
+                            </a>
                         </li>
                     ))}
                 </ul>
@@ -47,4 +55,3 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, items }) => {
 };
 
 export default DropdownMenu;
-
