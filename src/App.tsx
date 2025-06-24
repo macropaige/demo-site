@@ -39,18 +39,18 @@ const App: React.FC = () => {
         {/* ─── SITE HEADER ─── */}
         <header className={`main-header ${scrolled ? "shrink" : ""}`}>
           <div className="header-container">
-            <img src="/logo.svg" alt="Logo" className="logo" />
+            <img src="/uni-kitten.png" alt="Logo" className="logo" />
             <nav className="nav-center">
               <a href="#">Home</a>
               <a href="#">Updates</a>
               <a href="#">Directory</a>
               {/* your new dropdown */}
               <DropdownMenu
-                title="Application Links "
+                title="Application Links"
                 items={[
-                  { label: "Workday", href: "#", iconSrc: "/workday_blue.png" },
-                  { label: "OKTA Dashboard", href: "#", iconSrc: "/okta.png" },
-                  { label: "ServiceNow", href: "#", iconSrc: "/service_now.png" },
+                  { label: "Workday", href: "https://wd5.myworkday.com/usoncology/d/home.htmld", iconSrc: "/workday_blue.png" },
+                  { label: "OKTA Dashboard", href: "https://usonsso.okta.com/", iconSrc: "/okta.png" },
+                  { label: "ServiceNow", href: "https://mckesson1.service-now.com/", iconSrc: "/service_now.png" },
                 ]}
               />
             </nav>

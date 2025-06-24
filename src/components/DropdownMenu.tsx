@@ -34,13 +34,13 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, items }) => {
         <div className="dropdown" ref={ref}>
             <button className="dropdown-toggle" onClick={toggle}>
                 {title}
-                <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>&#9660;</span> {/* Unicode for a down arrow */}
+                <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>&#9660;</span>
             </button>
             {isOpen && (
                 <ul className="dropdown-menu">
                     {items.map((item) => (
                         <li key={item.label}>
-                            <a href={item.href}>
+                            <a href={item.href} target="_blank" rel="noopener noreferrer"> {/* Added target and rel attributes */}
                                 {item.iconSrc && (
                                     <img src={item.iconSrc} alt={`${item.label} icon`} className="dropdown-icon" />
                                 )}
