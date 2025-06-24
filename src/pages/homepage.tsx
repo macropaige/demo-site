@@ -19,7 +19,7 @@ const Homepage: React.FC = () => {
         <section className="hero">
           <h2>Intranet Demo Beta</h2>
           <p>
-            Welcome to the new company intranet demo! This platform will serve as
+            Intranet demo page! This platform will serve as
             the central hub for news, links, and resources.
           </p>
         </section>
