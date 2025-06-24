@@ -4,85 +4,86 @@ $transition-time: 0.3s;
 
 // — Background fade layer (unchanged) —
 .background-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-color: rgb(51, 51, 51);
-  transition: background-color $transition-time ease, opacity $transition-time ease;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-color: rgb(51, 51, 51);
+    transition: background-color $transition-time ease,
+        opacity $transition-time ease;
 }
 
 .background-layer.scrolled {
-  background-color: rgb(248, 248, 248);
-  opacity: 0.8;
+    background-color: rgb(248, 248, 248);
+    opacity: 0.8;
 }
 
 // — Page wrapper, starts hidden —
 .home {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 
-  // clear the banner (250px) + header (~4rem) + 2rem breathing room
-  padding-top: calc(250px + 4rem + 2rem);
+    // clear the banner (250px) + header (~4rem) + 2rem breathing room
+    padding-top: calc(250px + 4rem + 2rem);
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  opacity: 0;
-  transition: opacity 0.5s ease;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 // when you add `.visible` in JSX, it fades in:
 .home.visible {
-  opacity: 1;
+    opacity: 1;
 }
 
 // — Hero section —
 .hero {
-  text-align: center;
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
 
-  p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+    p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
 }
 
 // — Content section under hero —
 .content {
-  max-width: 700px;
-  padding: 2.5rem;
-  text-align: left;
+    max-width: 700px;
+    padding: 2.5rem;
+    text-align: left;
 
-  h3 {
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-  }
-
-  ul {
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
-
-    li {
-      margin-bottom: 0.5rem;
+    h3 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
     }
-  }
 
-  a {
-    color: #007bff;
-    text-decoration: underline;
-  }
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: underline;
+    }
 }

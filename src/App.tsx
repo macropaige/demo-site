@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./main.scss";
 import Homepage from "./pages/homepage";
+import DropdownMenu from "./components/DropdownMenu";
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -43,6 +44,15 @@ const App: React.FC = () => {
               <a href="#">Home</a>
               <a href="#">Updates</a>
               <a href="#">Directory</a>
+              {/* your new dropdown */}
+              <DropdownMenu
+                title="Application Links"
+                items={[
+                  { label: "Feature A", href: "#" },
+                  { label: "Feature B", href: "#" },
+                  { label: "Feature C", href: "#" },
+                ]}
+              />
             </nav>
           </div>
         </header>
