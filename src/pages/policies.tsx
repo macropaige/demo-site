@@ -20,12 +20,12 @@ const Policies: React.FC = () => {
                     <InteractiveCard
                         title="Human Resources Policies"
                         description="Access guidelines on employment, conduct, benefits, and leave."
-                        link="https://sharepoint.example.com/sites/ITDepartment/Policies/HR" // Example SharePoint link for HR policies
+                        link="file://oaoepwvfs003/home/Departments/" // Example SharePoint link for HR policies
                     />
                     <InteractiveCard
                         title="IT Security Policies"
                         description="Review protocols for data protection, network usage, and system access."
-                        link="https://sharepoint.example.com/sites/ITDepartment/Policies/Security" // Example SharePoint link for Security policies
+                        link="https://usoncologynet.sharepoint.com/sites/GRPwvciit/SitePages/Home.aspx" // Example SharePoint link for Security policies
                     />
                     <InteractiveCard
                         title="Data Management & Privacy"
@@ -43,8 +43,8 @@ const Policies: React.FC = () => {
                         link="https://sharepoint.example.com/sites/ITDepartment/Policies/EmployeeHandbook.docx" // Example SharePoint link for a document
                     />
                     <InteractiveCard
-                        title="Expense Report Procedure"
-                        description="Detailed steps and forms for submitting and processing expense reports."
+                        title="More"
+                        description="Don't click here, there isn't actually more."
                         link="file:///your/company/shared/drive/Finance/ExpenseReportProcedure.xlsx" // Example link to a shared drive for an Excel file
                     />
                 </div>
@@ -57,7 +57,7 @@ const Policies: React.FC = () => {
                 </p>
                 <ul>
                     <li>For HR-related policies: <a href="mailto:hr@example.com">hr@example.com</a></li>
-                    <li>For IT-related policies: <a href="mailto:it-support@example.com">it-support@example.com</a></li>
+                    <li>For IT-related policies: <a href="mailto:it@example.com">it-support@example.com</a></li>
                 </ul>
             </section>
         </div>
