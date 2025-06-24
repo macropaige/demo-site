@@ -1,0 +1,92 @@
+// src/pages/policies.scss
+
+.policies-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: calc(5rem + 2rem); // Adjust padding-top to clear fixed header and banner
+
+
+    @media (min-width: 768px) {
+        padding: 3rem;
+        padding-top: calc(5rem + 3rem);
+    }
+}
+
+.policies-hero {
+    background-color: #f0f4f8; // Light background
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    h1 {
+        font-size: 2.8rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
+.policy-categories {
+    margin-bottom: 3rem;
+
+    h2 {
+        font-size: 2.2rem;
+        color: #34495e;
+        margin-bottom: 2.5rem;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Responsive grid
+        gap: 2rem;
+        justify-content: center;
+    }
+}
+
+.additional-resources {
+    background-color: #e8f0f5;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            color: #34495e;
+
+            a {
+                color: #007bff;
+                text-decoration: underline;
+                &:hover {
+                    color: #0056b3;
+                }
+            }
+        }
+    }
+}

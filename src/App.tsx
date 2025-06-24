@@ -2,49 +2,81 @@
 import React, { useEffect, useState } from "react";
 import "./main.scss";
 import Homepage from "./pages/homepage";
+import Policies from "./pages/policies";
 import DropdownMenu from "./components/DropdownMenu";
+
+// Simple routing logic (for demonstration purposes)
+const renderPage = (path: string) => {
+  switch (path) {
+    case "/policies":
+      return <Policies />;
+    case "/":
+    default:
+      return <Homepage />;
+  }
+};
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const handlePopState = () => { // Changed name for clarity
+      setCurrentPage(window.location.pathname);
+    };
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("popstate", handlePopState);
+    };
   }, []);
+
+  const navigateTo = (path: string) => {
+    window.history.pushState({}, path, path);
+    setCurrentPage(path);
+    scrollToTop();
+  };
 
   const scrollToTop = () => {
     const scrollEl = document.scrollingElement || document.documentElement;
     scrollEl.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Determine if the banner should be visible
+  const isBannerVisible = currentPage === "/" && !scrolled; // Banner visible only on homepage and when not scrolled
+
   return (
     <>
       <div className="app-container">
         {/* ─── HERO BANNER ─── */}
-        <div className={`banner ${scrolled ? "fade-out" : ""}`}>
-          <img src="/Header.png" alt="Banner" />
-          <div className="banner-content">
-            <h1 className="banner-title">Intranet Demo Beta</h1>
-            <nav className="banner-nav">
-              <a href="#">Feature A</a>
-              <a href="#">Feature B</a>
-              <a href="#">Feature C</a>
-            </nav>
+        {isBannerVisible && ( // Conditionally render the banner
+          <div className="banner">
+            <img src="/Header.png" alt="Banner" />
+            <div className="banner-content">
+              <h1 className="banner-title">Intranet Demo Beta</h1>
+              <nav className="banner-nav">
+                <a href="#" onClick={() => navigateTo("/")}>Feature A</a>
+                <a href="#" onClick={() => navigateTo("/")}>Feature B</a>
+                <a href="#" onClick={() => navigateTo("/")}>Feature C</a>
+              </nav>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* ─── SITE HEADER ─── */}
         <header className={`main-header ${scrolled ? "shrink" : ""}`}>
           <div className="header-container">
             <img src="/uni-kitten.png" alt="Logo" className="logo" />
             <nav className="nav-center">
-              <a href="#">Home</a>
-              <a href="#">Policies</a>
-              <a href="#">Directory</a>
-              {/* your new dropdown */}
+              <a href="#" onClick={() => navigateTo("/")}>Home</a>
+              <a href="#" onClick={() => navigateTo("/policies")}>Policies</a>
+              <a href="#" onClick={() => navigateTo("/")}>Directory</a>
               <DropdownMenu
                 title="Application Links"
                 items={[
@@ -58,7 +90,7 @@ const App: React.FC = () => {
         </header>
 
         {/* ─── PAGE CONTENT ─── */}
-        <Homepage />
+        {renderPage(currentPage)}
 
         {/* ─── FOOTER ─── */}
         <footer className="footer-image">
@@ -80,4 +112,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
