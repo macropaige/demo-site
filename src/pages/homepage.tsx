@@ -24,7 +24,7 @@ const Homepage: React.FC = () => {
                     </p>
                 </section>
 
-                {/* you can add as many sections as you like */}
+                {/* existing content section */}
                 <section className="content">
                     <h3>Getting Started</h3>
                     <p>
@@ -44,6 +44,19 @@ const Homepage: React.FC = () => {
                         For feedback or issues, please contact IT at{" "}
                         <a href="mailto:it-support@example.com">it-support@example.com</a>.
                     </p>
+                </section>
+                
+                {/* New Section Break */}
+                <section className="highlight-section">
+                    <h3>Important Announcements</h3>
+                    <p>
+                        Stay tuned for upcoming events and important updates from your department!
+                        This section highlights key information.
+                    </p>
+                    <ul>
+                        <li>Company Holiday Party: December 15th</li>
+                        <li>New Software Rollout: Coming Soon!</li>
+                    </ul>
                 </section>
             </main>
         </>

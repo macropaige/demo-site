@@ -14,7 +14,8 @@ $transition-time: 0.3s;
 
 .background-layer.scrolled {
     background-color: rgb(248, 248, 248);
-    opacity: 0.8;
+    opacity: 1
+    ;
 }
 
 // — Page wrapper, starts hidden —
@@ -22,8 +23,9 @@ $transition-time: 0.3s;
     position: relative;
     z-index: 1;
 
-    // clear the banner (250px) + header (~4rem) + 2rem breathing room
-    padding-top: calc(250px + 4rem + 2rem);
+    // Adjust this padding-top or the margin-bottom of the hero section
+    // if the angle cuts into content or creates too much/too little space.
+    padding-top: calc(250px + 4rem + 2rem); 
 
     display: flex;
     flex-direction: column;
@@ -55,6 +57,54 @@ $transition-time: 0.3s;
         margin: 0 auto;
     }
 }
+
+/* Updated style for the highlight section with an inward-pointing '<' shape */
+.highlight-section {
+    background-color: rgb(238, 108, 142, 1); /* Example light blue background */
+    width: 100%;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+
+    // --- '<' shape pointing inward from the right ---
+    // This creates a "V" cut-out on the right side.
+    // 95% is how far left the top and bottom corners of the "V" are.
+    // 100% 50% is the tip of the "V" at the very right edge, vertically centered.
+    clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%); 
+    
+    /* You can adjust '95%' to control the depth of the inward point:
+        Smaller percentage (e.g., 90%) means a deeper 'V' shape.
+           Larger percentage (e.g., 98%) means a more subtle 'V' shape. */
+
+    h3 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0.5rem auto;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem auto;
+        max-width: 600px;
+        
+        li {
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            color: #34495e;
+        }
+    }
+}
+
 
 // — Content section under hero —
 .content {
