@@ -68,34 +68,33 @@ html {
         gap: 2rem;
 
         a {
-            position: relative; // enable positioning of the underline
-            padding-bottom: 0.25rem; // space for the underline
+            position: relative;
+            padding-bottom: 0.25rem;
             color: #333;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease; // smooth color change
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease; // Add transform to transition
 
-            // the sliding underline
             &::after {
                 content: "";
                 position: absolute;
-                left: 50%; // start centered
+                left: 0; // Start from left for this effect
                 bottom: 0;
                 width: 0%;
-                height: 2px;
-                background: currentColor; // matches link color
-                transition:
-                    width 0.3s ease,
-                    left 0.3s ease;
+                height: 4px;
+                background: linear-gradient(to right, rgb(238, 108, 142, 1), rgb(93, 128, 160, 1)); // Dual color gradient
+                transition: width 0.3s ease;
             }
 
-            // on hover: change color and expand underline
+            // on hover: change color, expand underline, and shift text
             &:hover {
-                color: rgb(238, 108, 142, 1); // or your brand accent
+                color: rgb(238, 108, 142, 1);
+                transform: translateY(-2px); // Subtle upward shift on hover
 
                 &::after {
                     width: 100%;
-                    left: 0; // slide edge-to-edge
                 }
             }
         }
