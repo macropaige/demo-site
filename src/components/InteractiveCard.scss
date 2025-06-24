@@ -1,0 +1,40 @@
+// src/components/InteractiveCard.scss
+.interactive-card-container {
+    display: flex;
+    flex-wrap: wrap; // Allows cards to wrap to the next line
+    justify-content: center;
+    gap: 2rem; // Space between cards
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.interactive-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 300px; // Fixed width for each card
+    text-align: center;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease-out,
+        box-shadow 0.3s ease-out; // Smooth transition for tilt and shadow
+    will-change: transform; // Optimize for animation
+
+    h4 {
+        color: #2c3e50;
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+    }
+
+    p {
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    &:hover {
+        transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.03); // 3D tilt and slight scale
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // More pronounced shadow on hover
+    }
+}

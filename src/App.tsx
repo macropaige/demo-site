@@ -42,7 +42,7 @@ const App: React.FC = () => {
             <img src="/uni-kitten.png" alt="Logo" className="logo" />
             <nav className="nav-center">
               <a href="#">Home</a>
-              <a href="#">Updates</a>
+              <a href="#">Policies</a>
               <a href="#">Directory</a>
               {/* your new dropdown */}
               <DropdownMenu
