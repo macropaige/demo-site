@@ -5,12 +5,10 @@ import Homepage from "./pages/homepage";
 
 const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      setShowContent(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,7 +25,6 @@ const App: React.FC = () => {
         {/* ─── HERO BANNER ─── */}
         <div className={`banner ${scrolled ? "fade-out" : ""}`}>
           <img src="/Header.png" alt="Banner" />
-
           <div className="banner-content">
             <h1 className="banner-title">Intranet Demo Beta</h1>
             <nav className="banner-nav">
@@ -73,3 +70,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
