@@ -94,7 +94,7 @@ const App: React.FC = () => {
 
         {/* ─── FOOTER ─── */}
         <footer className="footer-image">
-          <img src="/footer02.png" alt="Footer landscape" />
+          <img src="" alt="Footer landscape" />
           <div className="footer-text">
             © 2025 Kitty Cat Patty Wack. All rights reserved.
           </div>
